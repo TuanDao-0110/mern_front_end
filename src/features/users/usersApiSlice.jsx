@@ -40,10 +40,41 @@ export const userApiSlice = apiSlice.injectEndpoints({
         }
       },
     }),
+    addNewUser: builder.mutation({
+      query: (initialUserData) => ({
+        url: "/users",
+        method: "POST",
+        body: {
+          ...initialState,
+        },
+      }),
+      invalidatesTags: [{ type: "User", id: "LIST" }],
+    }),
+    updateUser: builder.mutation({
+      query: (initialUserData) => ({
+        url: "/user",
+        method: "PATCH",
+        body: { ...initialUserData },
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: "User", id: arg.id }],
+    }),
+    deleteUser: builder.mutation({
+      query: ({ id }) => ({
+        url: "/user",
+        method: "DELETE",
+        body: { id },
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: "User", id: arg.id }],
+    }),
   }),
 });
 // call api method
-export const { useGetUsersQuery } = userApiSlice;
+export const { 
+  useGetUsersQuery, 
+  useAddNewUserMutation, 
+  useDeleteUserMutation, 
+  useUpdateUserMutation 
+} = userApiSlice;
 
 // return the query result object: select() is offer by endpoints which provides:
 // type EndpointLogic = {
@@ -53,8 +84,7 @@ export const { useGetUsersQuery } = userApiSlice;
 //   matchFulfilled: Matcher<FulfilledAction>
 //   matchRejected: Matcher<RejectedAction>
 // }
-// 
-
+//
 
 // ---------------------------------------
 // from the step below ==> it help to retrive data which is create by using createEnityAdapter
