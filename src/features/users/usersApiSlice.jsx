@@ -52,7 +52,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
     }),
     updateUser: builder.mutation({
       query: (initialUserData) => ({
-        url: "/user",
+        url: "/users",
         method: "PATCH",
         body: { ...initialUserData },
       }),
@@ -60,7 +60,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
     }),
     deleteUser: builder.mutation({
       query: ({ id }) => ({
-        url: "/user",
+        url: "/users",
         method: "DELETE",
         body: { id },
       }),
