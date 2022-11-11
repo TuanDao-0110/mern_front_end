@@ -14,7 +14,7 @@ export const noteApiSlice = apiSlice.injectEndpoints({
         return response.status === 200 && !result.isError;
       },
       //   token tracking valid for 5s
-      keepUnusedDataFor: 5,
+      // keepUnusedDataFor: 5, ==> it will the default for  60s if we dont use it
       //   data receive ==> can achieve though hook
       transformResponse: (responseData) => {
         const loadednotes = responseData?.map((note) => {

@@ -13,8 +13,8 @@ export const userApiSlice = apiSlice.injectEndpoints({
       validateStatus: (response, result) => {
         return response.status === 200 && !result.isError;
       },
-      //   token tracking valid for 5s
-      keepUnusedDataFor: 5,
+      //   token tracking valid for 5s // ==> so after 5s ==> alldata disappear
+      // keepUnusedDataFor: 5,
       //   data receive ==> can achieve though hook
       transformResponse: (responseData) => {
         const loadedUsers = responseData.users?.map((user) => {
