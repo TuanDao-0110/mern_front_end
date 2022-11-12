@@ -6,10 +6,7 @@ import { faSave } from "@fortawesome/free-solid-svg-icons";
 
 const NewNoteForm = ({ users }) => {
   const [addNewNote, { isLoading, isSuccess, isError, error }] = useAddNoteMutation();
-  console.log(users)
-
   const navigate = useNavigate();
-
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [userId, setUserId] = useState(users[0]?.id);
