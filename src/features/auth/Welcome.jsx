@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { store } from "../../app/store";
 
 export default function Welcome() {
   const date = new Date();
 //   create date format
-  const today = new Intl.DateTimeFormat("en-GB", { dateStyle: "full", timeStyle: "short" }).format(date);
 
+console.log(store.getState())
+  const today = new Intl.DateTimeFormat("en-GB", { dateStyle: "full", timeStyle: "short" }).format(date);
   return (
     <section className="welcome">
       <p>{today}</p>

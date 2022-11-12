@@ -1,12 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { store } from "../../app/store";
 import User from "./User";
 import { selectUsersResult, useGetUsersQuery } from "./usersApiSlice";
 
 export default function UsersList() {
   const { data: users, isLoading, isSuccess, isError, error } = useGetUsersQuery();
-  // const allUser = useSelector((state) => selectUsersResult(state));
-  // console.log(allUser);
+console.log(store.getState())
   let content;
   if (isLoading) content = <p>Loading...</p>;
   if (isError) {

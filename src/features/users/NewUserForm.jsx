@@ -6,8 +6,8 @@ import { faSave } from "@fortawesome/free-solid-svg-icons";
 import { ROLES } from "../../config/roles";
 import { useState, useEffect } from "react";
 
-const USER_REGEX = /^[A-z] {3,20}$/;
-const PWD_REGEX = /^[A-z0-9!@#$%] [4,12]$/;
+const USER_REGEX = /^[A-z]{3,20}$/;
+const PWD_REGEX = /^[A-z0-9][4,12]$/;
 
 export default function NewUserForm() {
   // use new user
@@ -50,6 +50,7 @@ export default function NewUserForm() {
   const onSaveUserClicked = async (e) => {
     e.preventDefault();
     if (canSave) {
+      console.log({userName,password,roles})
       await addNewUser({ userName, password, roles });
     }
   };
