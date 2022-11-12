@@ -7,7 +7,17 @@ import { noteApiSlice, useGetNotesQuery } from "./noteApiSlicer.jsx";
 
 // import { useGetNotesQuery } from './noteApiSlicer'
 export default function NotesList() {
-  const { data: notes, isLoading, isSuccess, isError, error } = useGetNotesQuery();
+  const {
+    data: notes,
+    isLoading,
+    isSuccess,
+    isError,
+    error,
+  } = useGetNotesQuery(undefined, {
+    pollingInterval: 15000,
+    refetchOnFocus: true,
+    refetchOnMountOrArgChange: true,
+  });
   let content;
   if (isLoading) content = <p>Loading....</p>;
   if (isError) {
@@ -48,7 +58,6 @@ export default function NotesList() {
   }
   return (
     <>
-      {console.log("render")}
       {content}
     </>
   );

@@ -11,7 +11,6 @@ const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/;
 export default function EditUserForm({ user }) {
   const [updateUser, { isLoading, isSuccess, isError, error }] = useUpdateUserMutation();
   const [deleteUser, { isSuccess: isDelSuccess, isError: isDelError, error: delErorr }] = useDeleteUserMutation();
-
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [validUserName, setValidUserName] = useState(false);
@@ -28,7 +27,6 @@ export default function EditUserForm({ user }) {
     setVaidPwd(PWD_REGEX.test(password));
   }, [password]);
   useEffect(() => {
-    console.log(isSuccess);
     if (isSuccess || isDelSuccess) {
       setUserName("");
       setPassword("");
@@ -50,6 +48,22 @@ export default function EditUserForm({ user }) {
     } else {
       await updateUser({ id: user.id, username: userName, roles, active });
     }
+    // try {
+    //   if (password) {
+    //     await updateUser({ id: user.id, username: userName, password, roles, active }).unwrap();
+    //     setUserName("");
+    //     setPassword("");
+    //     setRoles("");
+    //     navigate("/dash/users");
+    //   } else {
+    //     await updateUser({ id: user.id, username: userName, roles, active });
+    //   }
+    // } catch (err) {
+    //   console.log(error);
+    //   console.log(err)
+    //   alert(err.data.msg);
+    //   navigate("/dash/users");
+    // }
   };
   const onDeletedUserClicked = async () => {
     await deleteUser({ id: user.id });

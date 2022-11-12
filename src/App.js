@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import DashLayout from './component/DashLayout';
 import Layout from './component/Layout';
 import Login from './features/auth/Login';
@@ -37,6 +37,8 @@ function App() {
               </Route>
             </Route> {/* End Dash route*/}
           </Route>
+          <Route path="*" element={<Navigate to="/" replace />} />
+
         </Route>
       </Routes>
     </>

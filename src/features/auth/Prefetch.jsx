@@ -1,5 +1,5 @@
 import { store } from "../../app/store";
-import { noteApiSlice } from "../notes/noteApiSlicer";
+import { noteApiSlice, useGetNotesQuery } from "../notes/noteApiSlicer";
 import { userApiSlice } from "../users/usersApiSlice";
 
 import React, { useEffect } from "react";

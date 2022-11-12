@@ -1,7 +1,9 @@
 import React from 'react'
 
-export default function NewNoteForm() {
+export default function NewNoteForm({users}) {
   return (
-    <div>NewNoteForm</div>
+    <div>
+
+    </div>
   )
 }

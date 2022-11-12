@@ -50,7 +50,6 @@ export default function NewUserForm() {
   const onSaveUserClicked = async (e) => {
     e.preventDefault();
     if (canSave) {
-      console.log({userName,password,roles})
       await addNewUser({ userName, password, roles });
     }
   };
