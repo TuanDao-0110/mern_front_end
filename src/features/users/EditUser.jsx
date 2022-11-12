@@ -8,7 +8,6 @@ export default function EditUser() {
   const { id } = useParams();
 
   const user = useSelector((state) => selectUserById(state, id));
-  console.log(user);
   const content = user ? <EditUserForm user={user}></EditUserForm> : <p>Loading...</p>;
   return content;
 }

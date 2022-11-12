@@ -1,6 +1,9 @@
 import React from "react";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { store } from "../../app/store.jsx";
 import Note from "./Note.jsx";
-import { useGetNotesQuery } from "./noteApiSlicer.jsx";
+import { noteApiSlice, useGetNotesQuery } from "./noteApiSlicer.jsx";
 
 // import { useGetNotesQuery } from './noteApiSlicer'
 export default function NotesList() {
@@ -43,5 +46,10 @@ export default function NotesList() {
       </table>
     );
   }
-  return content;
+  return (
+    <>
+      {console.log("render")}
+      {content}
+    </>
+  );
 }

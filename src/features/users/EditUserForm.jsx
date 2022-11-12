@@ -11,7 +11,7 @@ const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/;
 export default function EditUserForm({ user }) {
   const [updateUser, { isLoading, isSuccess, isError, error }] = useUpdateUserMutation();
   const [deleteUser, { isSuccess: isDelSuccess, isError: isDelError, error: delErorr }] = useDeleteUserMutation();
-  
+
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [validUserName, setValidUserName] = useState(false);
@@ -28,6 +28,7 @@ export default function EditUserForm({ user }) {
     setVaidPwd(PWD_REGEX.test(password));
   }, [password]);
   useEffect(() => {
+    console.log(isSuccess);
     if (isSuccess || isDelSuccess) {
       setUserName("");
       setPassword("");
@@ -57,7 +58,6 @@ export default function EditUserForm({ user }) {
   const options = Object.values(ROLES).map((role) => {
     return (
       <option key={role} value={role}>
-        {" "}
         {role}
       </option>
     );
