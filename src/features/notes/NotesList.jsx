@@ -13,7 +13,7 @@ export default function NotesList() {
     isSuccess,
     isError,
     error,
-  } = useGetNotesQuery(undefined, {
+  } = useGetNotesQuery("notesList", {
     pollingInterval: 15000,
     refetchOnFocus: true,
     refetchOnMountOrArgChange: true,
@@ -56,9 +56,5 @@ export default function NotesList() {
       </table>
     );
   }
-  return (
-    <>
-      {content}
-    </>
-  );
+  return <>{content}</>;
 }

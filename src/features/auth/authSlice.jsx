@@ -9,7 +9,7 @@ const authSlice = createSlice({
       state.token = accessToken;
     },
     logOut: (state, action) => {
-      state = { token: null };
+      state.token = null;
     },
   },
 });
