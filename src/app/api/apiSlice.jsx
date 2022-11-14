@@ -39,7 +39,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
       // retry original query with new access token
       result = await baseQuery(args, api, extraOptions);
     } else {
-      // thi only happend when our refresh token expired. ===> that mean it doesnt work any more to generate new Access_Token
+      // this only happend when our refresh token expired. ===> that mean it doesnt work any more to generate new Access_Token
       if (refreshResult?.error?.status === 403) {
         refreshResult.error.data.message = "your login has expired";
         alert('your login expired')

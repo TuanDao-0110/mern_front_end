@@ -11,6 +11,7 @@ import NewUserForm from './features/users/NewUserForm'
 import EditNote from './features/notes/EditNote.jsx'
 import NewNote from './features/notes/NewNote.jsx'
 import Prefetch from './features/auth/Prefetch';
+import PersistLogin from './features/auth/PersistLogin';
 function App() {
   return (
     <>
@@ -19,23 +20,26 @@ function App() {
           {/* Route with index will shown up in Parent Outlet */}
           <Route index element={<Public></Public>} ></Route>
           <Route path='login' element={<Login></Login>}></Route>
+          <Route element={<PersistLogin></PersistLogin>}>
+            <Route element={<Prefetch></Prefetch>}>
 
-          <Route element={<Prefetch></Prefetch>}>
-            <Route path='dash' element={<DashLayout></DashLayout>}>
-              <Route index element={<Welcome></Welcome>}></Route>
-              <Route path='users'>
-                <Route index element={<UsersList></UsersList>}></Route>
-                <Route path=':id' element={<EditUser />}></Route>
-                <Route path='new' element={<NewUserForm />}></Route>
+              <Route path='dash' element={<DashLayout></DashLayout>}>
+                <Route index element={<Welcome></Welcome>}></Route>
+                <Route path='users'>
+                  <Route index element={<UsersList></UsersList>}></Route>
+                  <Route path=':id' element={<EditUser />}></Route>
+                  <Route path='new' element={<NewUserForm />}></Route>
 
-              </Route>
-              <Route path='notes'>
-                <Route index element={<NotesList></NotesList>}></Route>
-                <Route path=':id' element={<EditNote />}></Route>
-                <Route path='new' element={<NewNote />}></Route>
-              </Route>
-            </Route> {/* End Dash route*/}
+                </Route>
+                <Route path='notes'>
+                  <Route index element={<NotesList></NotesList>}></Route>
+                  <Route path=':id' element={<EditNote />}></Route>
+                  <Route path='new' element={<NewNote />}></Route>
+                </Route>
+              </Route> {/* End Dash route*/}
+            </Route>
           </Route>
+
           <Route path="*" element={<Navigate to="/" replace />} />
 
         </Route>
