@@ -9,13 +9,14 @@ import { store } from "../../app/store";
 import { userApiSlice } from "../users/usersApiSlice";
 import { useLoginMutation } from "./authApiSlice";
 import { setCredentials } from "./authSlice";
-
+import usePersit from "../../hooks/usePersist";
 export default function Login() {
   const userRef = useRef();
   const errRef = useRef();
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
+  const [persist, setPersist] = usePersit();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [login, { isLoading }] = useLoginMutation();
@@ -48,12 +49,12 @@ export default function Login() {
       } else {
         setErrMsg(error.data?.message);
       }
-
       errRef.current.focus();
     }
   };
   const handleUserInput = (e) => setUserName(e.target.value);
   const handlePwdInput = (e) => setPassword(e.target.value);
+  const handleToogle = () => setPersist((prev) => !prev);
   if (isLoading) return <p>Loading</p>;
   const content = (
     <section className="public">
@@ -70,6 +71,10 @@ export default function Login() {
           <label htmlFor="pwd">password:</label>
           <input type="password" id="pwd" value={password} onChange={handlePwdInput} required />
           <button className="form__submit-button">Sign in</button>
+          <label htmlFor="persist" className="form__persist">
+            <input type="checkbox" className="form__checkbox" id="persist" onChange={handleToogle} checked={persist} />
+            trust this device
+          </label>
         </form>
       </main>
       <footer>
