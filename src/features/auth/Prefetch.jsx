@@ -16,7 +16,7 @@ function Prefetch() {
       notes.unsubscribe();
       users.unsubscribe();
     };
-  });
+  }, []);
   return <Outlet></Outlet>;
 }
 

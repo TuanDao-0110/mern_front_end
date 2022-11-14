@@ -21,7 +21,6 @@ function App() {
           <Route path='login' element={<Login></Login>}></Route>
 
           <Route element={<Prefetch></Prefetch>}>
-
             <Route path='dash' element={<DashLayout></DashLayout>}>
               <Route index element={<Welcome></Welcome>}></Route>
               <Route path='users'>
